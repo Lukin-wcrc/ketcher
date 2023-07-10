@@ -301,7 +301,13 @@ class ReBond extends ReObject {
     this.path = getBondPath(restruct, this, hb1, hb2)
     this.rbb = util.relBox(this.path.getBBox())
     // add layer for bond's skeleton:
-    restruct.addReObjectPath(LayerMap.data, this.visel, this.path, null, true)
+    restruct.addReObjectPath(
+      LayerMap.bondSkeleton,
+      this.visel,
+      this.path,
+      null,
+      true
+    )
     const reactingCenter: any = {}
     reactingCenter.path = getReactingCenterPath(render, this, hb1, hb2)
     if (reactingCenter.path) {
