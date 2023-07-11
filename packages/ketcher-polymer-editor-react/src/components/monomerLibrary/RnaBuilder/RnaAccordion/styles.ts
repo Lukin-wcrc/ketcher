@@ -15,7 +15,7 @@
  ***************************************************************************/
 
 import styled from '@emotion/styled'
-import { Accordion } from 'ketcher-react'
+import { Accordion, Button } from 'ketcher-react'
 
 export const RnaAccordionContainer = styled.div({
   display: 'flex',
@@ -35,4 +35,10 @@ export const DetailsContainer = styled.div({
   gap: '24px',
   justifyContent: 'start',
   padding: '16px 12px'
+})
+
+export const StyledButton = styled(Button)((props) => {
+  return {
+    backgroundColor: props.theme.ketcher.color.button.transparent.active
+  }
 })

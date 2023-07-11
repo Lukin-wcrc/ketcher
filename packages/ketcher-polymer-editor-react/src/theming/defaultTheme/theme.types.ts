@@ -64,6 +64,9 @@ export type EditorTheme = {
         clicked: string
         disabled: string
       }
+      transparent: {
+        active: string
+      }
       text: {
         primary: string
         secondary: string

@@ -13,11 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-import { MonomerItemType } from '../monomerLibraryItem/types'
+import { EmptyFunction } from 'helpers'
+import { Card } from './styles'
+import { IRnaPresetItemrops } from './types'
 
-export interface IMonomerGroupProps {
-  items: MonomerItemType[]
-  onItemClick?: (item: MonomerItemType) => void
-  title?: string
-  selectedMonomerUniqueKey?: string
+const RnaPresetItem = ({
+  preset,
+  isSelected,
+  onClick = EmptyFunction
+}: IRnaPresetItemrops) => {
+  return (
+    <Card
+      onClick={onClick}
+      selected={isSelected}
+      code={preset.name}
+      data-testid={preset.name}
+      data-rna-preset-item-name={preset.name}
+    >
+      <span>{preset.name}</span>
+    </Card>
+  )
 }
+
+export { RnaPresetItem }

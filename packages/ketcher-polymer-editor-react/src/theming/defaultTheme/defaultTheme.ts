@@ -73,6 +73,9 @@ export const defaultTheme: EditorTheme = {
         clicked: '#AEAEAE',
         disabled: 'rgba(113, 113, 113, 0.4)'
       },
+      transparent: {
+        active: 'transparent'
+      },
       text: {
         primary: '#FFFFFF',
         secondary: '#005662',

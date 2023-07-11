@@ -29,16 +29,10 @@ export const GroupBlock = ({
   iconName,
   monomerName,
   selected,
-  disabled,
   onClick
 }: IGroupBlockProps) => {
   return (
-    <GroupBlockContainer
-      selected={selected}
-      onClick={onClick}
-      disabled={disabled}
-      empty
-    >
+    <GroupBlockContainer selected={selected} onClick={onClick} empty>
       <GroupIcon empty={!monomerName} selected={selected} name={iconName} />
       <TextContainer>
         <GroupName>{groupNameToRnaEditorItemLabel[groupName]}</GroupName>

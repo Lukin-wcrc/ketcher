@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-import { MonomerItemType } from '../monomerLibraryItem/types'
 
-export interface IMonomerGroupProps {
-  items: MonomerItemType[]
-  onItemClick?: (item: MonomerItemType) => void
-  title?: string
-  selectedMonomerUniqueKey?: string
+import { IRnaPreset } from '../RnaBuilder/types'
+
+export interface IRnaPresetItemrops {
+  preset: IRnaPreset
+  isSelected?: boolean
+  onClick?: VoidFunction
 }

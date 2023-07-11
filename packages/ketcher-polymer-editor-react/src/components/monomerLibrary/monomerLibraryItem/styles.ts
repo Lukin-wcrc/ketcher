@@ -15,12 +15,16 @@
  ***************************************************************************/
 import styled from '@emotion/styled'
 
-export const Card = styled.div<{ code: string; isSelected?: boolean }>`
+export const Card = styled.div<{
+  code: string
+  selected?: boolean
+  disabled?: boolean
+}>`
   background: white;
   width: 58px;
   height: 48px;
   text-align: center;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,8 +46,8 @@ export const Card = styled.div<{ code: string; isSelected?: boolean }>`
     outline: 1px solid #b4b9d6;
     &::after {
       content: '';
-      background: ${({ code, theme, isSelected }) =>
-        isSelected
+      background: ${({ code, theme, selected }) =>
+        selected
           ? theme.ketcher.color.button.primary.active
           : theme.ketcher.monomer.color[code]?.hover};
     }
@@ -60,8 +64,8 @@ export const Card = styled.div<{ code: string; isSelected?: boolean }>`
     left: 0;
     width: 100%;
     height: 8px;
-    background: ${({ code, theme, isSelected }) =>
-      isSelected
+    background: ${({ code, theme, selected }) =>
+      selected
         ? theme.ketcher.color.button.primary.active
         : theme.ketcher.monomer.color[code]?.regular};
   }

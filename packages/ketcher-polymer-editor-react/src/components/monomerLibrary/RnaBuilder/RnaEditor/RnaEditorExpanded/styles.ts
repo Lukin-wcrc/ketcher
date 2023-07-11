@@ -39,17 +39,27 @@ export const ButtonsContainer = styled.div({
   gap: '8px'
 })
 
-export const StyledButton = styled(Button)((props) => ({
-  width: '100%',
-  whiteSpace: 'nowrap',
-  fontSize: props.theme.ketcher.font.size.regular
-}))
+export const StyledButton = styled(Button)((props) => {
+  return {
+    width: '100%',
+    whiteSpace: 'nowrap',
+    fontSize: props.theme.ketcher.font.size.regular,
+    backgroundColor: props.primary
+      ? props.theme.ketcher.color.button.primary.active
+      : null,
+    color:
+      props.primary && !props.disabled
+        ? props.theme.ketcher.color.button.text.primary
+        : null
+  }
+})
 
 export const NameContainer = styled.div<{ selected?: boolean }>((props) => ({
   position: 'relative',
   borderRadius: props.theme.ketcher.border.radius.regular,
   backgroundColor: props.theme.ketcher.color.background.primary,
   boxShadow: props.theme.ketcher.shadow.regular,
+  cursor: 'pointer',
   overflow: 'hidden',
   padding: '28px 6px 6px 6px',
   outline: props.selected

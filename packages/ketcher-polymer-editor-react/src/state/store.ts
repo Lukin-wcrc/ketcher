@@ -20,6 +20,7 @@ import { libraryReducer } from 'state/library'
 import createSagaMiddleware from 'redux-saga'
 import { rootSaga } from 'state/rootSaga'
 import { modalReducer } from 'state/modal'
+import { rnaBuilderReducer } from 'state/rna-builder'
 
 export function configureAppStore(preloadedState = {}) {
   const sagaMiddleware = createSagaMiddleware()
@@ -28,7 +29,8 @@ export function configureAppStore(preloadedState = {}) {
     reducer: {
       editor: editorReducer,
       modal: modalReducer,
-      library: libraryReducer
+      library: libraryReducer,
+      rnaBuilder: rnaBuilderReducer
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({

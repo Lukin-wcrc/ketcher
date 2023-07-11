@@ -18,7 +18,6 @@ import styled from '@emotion/styled'
 import { Icon } from 'ketcher-react'
 
 export const GroupBlockContainer = styled.div<{
-  disabled?: boolean
   selected?: boolean
   empty?: boolean
 }>((props) => ({
