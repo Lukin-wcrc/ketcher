@@ -39,18 +39,18 @@ export const ButtonsContainer = styled.div({
   gap: '8px'
 })
 
-export const StyledButton = styled(Button)((props) => {
+export const StyledButton = styled(Button)<{ primary?: boolean }>((props) => {
   return {
     width: '100%',
     whiteSpace: 'nowrap',
     fontSize: props.theme.ketcher.font.size.regular,
     backgroundColor: props.primary
       ? props.theme.ketcher.color.button.primary.active
-      : null,
+      : undefined,
     color:
       props.primary && !props.disabled
         ? props.theme.ketcher.color.button.text.primary
-        : null
+        : undefined
   }
 })
 
