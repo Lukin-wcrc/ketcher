@@ -16,10 +16,10 @@
 import styled from '@emotion/styled'
 import { Card as MonomerCard } from '../monomerLibraryItem/styles'
 
-export const Card = styled(MonomerCard)<{ code: string; selected?: boolean }>`
+export const Card = styled(MonomerCard)<{ code?: string; selected?: boolean }>`
   &::after {
     content: '';
-    background: ${({ code, theme, selected }) =>
+    background: ${({ theme, selected }) =>
       selected ? theme.ketcher.color.button.primary.active : '#faa500'};
   }
 `

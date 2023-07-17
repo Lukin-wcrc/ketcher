@@ -35,7 +35,6 @@ import {
   selectActivePresetMonomerGroup,
   selectActiveRnaBuilderItem,
   selectIsPresetReadyToSave,
-  selectPresets,
   setActiveRnaBuilderItem
 } from 'state/rna-builder'
 import { useAppSelector } from 'hooks'
@@ -56,7 +55,6 @@ export const RnaEditorExpanded = ({
 }: IRnaEditorExpandedProps) => {
   const dispatch = useDispatch()
   const activePreset = useAppSelector(selectActivePreset)
-  const presets = useAppSelector(selectPresets)
   const groupsData = [
     {
       groupName: MonomerGroups.SUGARS,

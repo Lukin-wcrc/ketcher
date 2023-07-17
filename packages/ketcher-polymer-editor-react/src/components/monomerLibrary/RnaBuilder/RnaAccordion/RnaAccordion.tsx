@@ -17,7 +17,7 @@
 import { MonomerGroup } from 'components/monomerLibrary/monomerLibraryGroup'
 import { useAppSelector } from 'hooks'
 import { IconName } from 'ketcher-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   MonomerCodeToGroup,
   MonomerGroupCodes,
@@ -50,15 +50,22 @@ import {
   setIsEditMode
 } from 'state/rna-builder'
 import { useDispatch } from 'react-redux'
-import {
-  RNA_PRESET_ITEM_CARD_SELECTOR,
-  RnaPresetItem
-} from 'components/monomerLibrary/RnaPresetItem'
+import { RnaPresetItem } from 'components/monomerLibrary/RnaPresetItem'
 import { IRnaPreset } from '../types'
 import {
   GroupContainer,
   ItemsContainer
 } from 'components/monomerLibrary/monomerLibraryGroup/styles'
+import { MonomerItemType } from 'components/monomerLibrary/monomerLibraryItem/types'
+
+interface IGroupsDataItem {
+  groupName: RnaBuilderItem
+  iconName: string
+  groups: {
+    groupItems: IRnaPreset[] | MonomerItemType[]
+    groupTitle?: string
+  }[]
+}
 
 export const RnaAccordion = () => {
   const monomers = useAppSelector(selectFilteredMonomers)
@@ -68,9 +75,8 @@ export const RnaAccordion = () => {
   const presets = useAppSelector(selectPresets)
   const isEditMode = useAppSelector(selectIsEditMode)
 
-  const [expandedAccordion, setExpandedAccordion] = useState<RnaBuilderItem>(
-    RnaBuilderPresetsItem.Presets
-  )
+  const [expandedAccordion, setExpandedAccordion] =
+    useState<RnaBuilderItem | null>(RnaBuilderPresetsItem.Presets)
 
   const handleAccordionSummaryClick = (rnaBuilderItem: RnaBuilderItem) => {
     if (expandedAccordion === rnaBuilderItem) {
@@ -78,7 +84,7 @@ export const RnaAccordion = () => {
     } else setExpandedAccordion(rnaBuilderItem)
   }
 
-  const groupsData = [
+  const groupsData: IGroupsDataItem[] = [
     {
       groupName: RnaBuilderPresetsItem.Presets,
       iconName: 'preset',
@@ -144,7 +150,7 @@ export const RnaAccordion = () => {
 
   return (
     <RnaAccordionContainer>
-      {groupsData.map((groupData, i) => {
+      {groupsData.map((groupData) => {
         const expanded = expandedAccordion === groupData.groupName
         const quantity = groupData.groups.reduce(
           (acc, group) => acc + group.groupItems.length || 0,
@@ -191,7 +197,7 @@ export const RnaAccordion = () => {
                     key={groupTitle}
                     title={groupData.groups.length > 1 ? groupTitle : undefined}
                     onlyOneGroup={groupData.groups.length === 1}
-                    items={groupItems}
+                    items={groupItems as MonomerItemType[]}
                     selectedMonomerUniqueKey={
                       monomer ? getMonomerUniqueKey(monomer) : undefined
                     }

@@ -14,7 +14,7 @@
  * limitations under the License.
  ***************************************************************************/
 
-import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IRnaPreset } from 'components/monomerLibrary/RnaBuilder/types'
 import { RootState } from 'state'
 import { MonomerGroups } from '../../constants'
@@ -41,7 +41,6 @@ const initialState: IRnaBuilderState = {
   isEditMode: false,
   hasUniqueNameError: false
 }
-
 export const monomerGroupToPresetGroup = {
   [MonomerGroups.BASES]: 'base',
   [MonomerGroups.SUGARS]: 'sugar',
@@ -69,7 +68,10 @@ export const rnaBuilderSlice = createSlice({
     setActivePresetName: (state, action: PayloadAction<string>) => {
       state.activePreset!.name = action.payload
     },
-    setActiveRnaBuilderItem: (state, action: PayloadAction<RnaBuilderItem>) => {
+    setActiveRnaBuilderItem: (
+      state,
+      action: PayloadAction<RnaBuilderItem | null>
+    ) => {
       state.activeRnaBuilderItem = action.payload
     },
     setActivePresetMonomerGroup: (

@@ -16,7 +16,7 @@
 import styled from '@emotion/styled'
 
 export const Card = styled.div<{
-  code: string
+  code?: string
   selected?: boolean
   disabled?: boolean
   wide?: boolean
@@ -51,7 +51,7 @@ export const Card = styled.div<{
       background: ${({ code, theme, selected }) =>
         selected
           ? theme.ketcher.color.button.primary.active
-          : theme.ketcher.monomer.color[code]?.hover};
+          : theme.ketcher.monomer.color[code as string]?.hover};
     }
     > .star {
       visibility: visible;
@@ -69,7 +69,7 @@ export const Card = styled.div<{
     background: ${({ code, theme, selected }) =>
       selected
         ? theme.ketcher.color.button.primary.active
-        : theme.ketcher.monomer.color[code]?.regular};
+        : theme.ketcher.monomer.color[code as string]?.regular};
   }
   > span {
     position: absolute;

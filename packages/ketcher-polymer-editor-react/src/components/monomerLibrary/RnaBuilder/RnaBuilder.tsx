@@ -21,11 +21,9 @@ import { useAppDispatch, useAppSelector } from 'hooks'
 import {
   selectActivePreset,
   selectHasUniqueNameError,
-  selectPresets,
   setHasUniqueNameError
 } from 'state/rna-builder'
 import { Modal } from 'components/shared/modal'
-import { ActionButton } from 'components/shared/actionButton'
 import { StyledButton } from 'components/monomerLibrary/RnaBuilder/RnaAccordion/styles'
 
 export const RnaBuilder = () => {
