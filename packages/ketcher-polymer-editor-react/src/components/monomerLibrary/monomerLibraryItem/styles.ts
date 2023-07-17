@@ -19,9 +19,10 @@ export const Card = styled.div<{
   code: string
   selected?: boolean
   disabled?: boolean
+  wide?: boolean
 }>`
   background: white;
-  width: 58px;
+  width: ${({ wide }) => (wide ? '71px' : '64px')};
   height: 48px;
   text-align: center;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
@@ -35,9 +36,10 @@ export const Card = styled.div<{
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   margin: 0;
-  margin-bottom: 8px;
   user-select: none;
-
+  border-color: ${({ theme }) => theme.ketcher.color.button.primary.active};
+  border-width: ${({ selected }) => (selected ? '0px 2px 2px' : '0px')};
+  border-style: solid;
   .hidden & .star {
     visibility: hidden !important;
   }
@@ -71,8 +73,8 @@ export const Card = styled.div<{
   }
   > span {
     position: absolute;
-    bottom: 6px;
-    left: 6px;
+    bottom: ${({ selected }) => (selected ? '4px' : '6px')};
+    left: ${({ selected }) => (selected ? '4px' : '6px')};
     text-overflow: ellipsis;
     max-width: calc(100% - 12px);
     overflow: hidden;

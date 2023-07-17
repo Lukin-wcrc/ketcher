@@ -36,6 +36,7 @@ export type MonomerItemType = {
 export interface IMonomerItemProps {
   item: MonomerItemType
   isSelected?: boolean
+  onlyOneGroup?: boolean
   onClick?: VoidFunction
   onMouseLeave?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   onMouseMove?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void

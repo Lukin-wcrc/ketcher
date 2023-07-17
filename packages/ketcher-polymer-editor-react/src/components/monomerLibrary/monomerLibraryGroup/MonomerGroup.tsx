@@ -31,6 +31,7 @@ import { getMonomerUniqueKey } from 'state/library'
 const MonomerGroup = ({
   items,
   title,
+  onlyOneGroup,
   selectedMonomerUniqueKey,
   onItemClick = EmptyFunction
 }: IMonomerGroupProps) => {
@@ -76,6 +77,7 @@ const MonomerGroup = ({
             <MonomerItem
               key={key}
               item={monomer}
+              onlyOneGroup={onlyOneGroup}
               isSelected={
                 selectedMonomerUniqueKey === getMonomerUniqueKey(monomer)
               }

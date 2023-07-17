@@ -27,6 +27,7 @@ const RnaPresetItem = ({
       onClick={onClick}
       selected={isSelected}
       code={preset.name}
+      wide
       data-testid={preset.name}
       data-rna-preset-item-name={preset.name}
     >

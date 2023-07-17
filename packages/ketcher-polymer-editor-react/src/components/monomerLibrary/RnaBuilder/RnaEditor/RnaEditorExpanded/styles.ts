@@ -61,7 +61,10 @@ export const NameContainer = styled.div<{ selected?: boolean }>((props) => ({
   boxShadow: props.theme.ketcher.shadow.regular,
   cursor: 'pointer',
   overflow: 'hidden',
-  padding: '28px 6px 6px 6px',
+  padding: '0 6px 6px 6px',
+  display: 'flex',
+  alignItems: 'flex-end',
+  height: '48px',
   outline: props.selected
     ? props.theme.ketcher.outline.selected.medium
     : 'none',
@@ -84,4 +87,9 @@ export const NameLine = styled.span<{ selected?: boolean }>((props) => ({
 
 export const NameInput = styled(Input)({
   width: '100%'
+})
+
+export const PresetName = styled.div({
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'
 })

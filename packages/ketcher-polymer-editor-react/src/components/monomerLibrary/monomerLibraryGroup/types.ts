@@ -20,4 +20,5 @@ export interface IMonomerGroupProps {
   onItemClick?: (item: MonomerItemType) => void
   title?: string
   selectedMonomerUniqueKey?: string
+  onlyOneGroup?: boolean
 }

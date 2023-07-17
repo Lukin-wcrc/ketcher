@@ -24,8 +24,6 @@ export const ItemsContainer = styled.div`
   grid-template-rows: auto;
   gap: 8px;
   margin-bottom: 24px;
-  margin-left: auto;
-  margin-right: auto;
 
   &::after {
     content: '';

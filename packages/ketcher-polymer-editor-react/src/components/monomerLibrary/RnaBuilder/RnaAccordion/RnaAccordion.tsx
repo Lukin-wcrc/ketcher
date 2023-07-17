@@ -190,6 +190,7 @@ export const RnaAccordion = () => {
                   <MonomerGroup
                     key={groupTitle}
                     title={groupData.groups.length > 1 ? groupTitle : undefined}
+                    onlyOneGroup={groupData.groups.length === 1}
                     items={groupItems}
                     selectedMonomerUniqueKey={
                       monomer ? getMonomerUniqueKey(monomer) : undefined

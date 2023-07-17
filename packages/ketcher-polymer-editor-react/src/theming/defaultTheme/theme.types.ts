@@ -40,6 +40,7 @@ export type EditorTheme = {
       light: string
       dark: string
       error: string
+      lightgrey: string
     }
     tab: {
       regular: string

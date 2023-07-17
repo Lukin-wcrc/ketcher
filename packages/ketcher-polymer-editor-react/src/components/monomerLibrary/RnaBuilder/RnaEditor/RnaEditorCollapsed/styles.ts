@@ -30,13 +30,16 @@ export const MonomerFullName = styled.span((props) => ({
 }))
 
 export const MonomerName = styled.span((props) => ({
-  fontSize: props.theme.ketcher.font.size.medium
+  fontSize: props.theme.ketcher.font.size.medium,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'
 }))
 
 export const TextContainer = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  gap: '4px'
+  gap: '4px',
+  width: '100%'
 })
 
 export const EditIcon = styled(Icon)((props) => ({

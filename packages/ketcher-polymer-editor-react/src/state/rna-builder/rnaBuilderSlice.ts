@@ -31,13 +31,15 @@ interface IRnaBuilderState {
   presets: IRnaPreset[]
   activeRnaBuilderItem?: RnaBuilderItem | null
   isEditMode: boolean
+  hasUniqueNameError: boolean
 }
 
 const initialState: IRnaBuilderState = {
   activePreset: null,
   presets: [],
   activeRnaBuilderItem: null,
-  isEditMode: false
+  isEditMode: false,
+  hasUniqueNameError: false
 }
 
 export const monomerGroupToPresetGroup = {
@@ -94,6 +96,9 @@ export const rnaBuilderSlice = createSlice({
     },
     setIsEditMode: (state, action: PayloadAction<boolean>) => {
       state.isEditMode = action.payload
+    },
+    setHasUniqueNameError: (state, action: PayloadAction<boolean>) => {
+      state.hasUniqueNameError = action.payload
     }
   }
 })
@@ -128,10 +133,26 @@ export const selectIsEditMode = (state: RootState): boolean => {
 }
 export const selectPresetFullName = (preset: IRnaPreset): string => {
   if (!preset) return ''
+  const sugar = preset.sugar?.props.MonomerName || ''
+  const base = preset.base?.props.MonomerName || ''
+  const phosphate = preset.phosphate?.props.MonomerName || ''
+  let fullName = sugar
 
-  return `${preset.sugar?.props.MonomerName || ''}(${
-    preset.base?.props.MonomerName || ''
-  })${preset.phosphate?.props.MonomerName || ''}`
+  if (sugar && phosphate) {
+    fullName += `(${base})`
+  } else if ((sugar || phosphate) && base) {
+    fullName += `(${base})`
+  } else {
+    fullName += base
+  }
+
+  fullName += phosphate
+
+  return fullName
+}
+
+export const selectHasUniqueNameError = (state: RootState) => {
+  return state.rnaBuilder.hasUniqueNameError
 }
 
 export const {
@@ -141,7 +162,8 @@ export const {
   setActivePresetMonomerGroup,
   savePreset,
   createNewPreset,
-  setIsEditMode
+  setIsEditMode,
+  setHasUniqueNameError
 } = rnaBuilderSlice.actions
 
 export const rnaBuilderReducer = rnaBuilderSlice.reducer

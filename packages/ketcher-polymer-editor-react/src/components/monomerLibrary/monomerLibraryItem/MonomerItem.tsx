@@ -23,6 +23,7 @@ import { selectIsEditMode } from 'state/rna-builder'
 
 const MonomerItem = ({
   item,
+  onlyOneGroup,
   onMouseLeave,
   onMouseMove,
   isSelected,
@@ -37,6 +38,7 @@ const MonomerItem = ({
       onClick={onClick}
       selected={isSelected}
       disabled={!isEditMode}
+      wide={onlyOneGroup}
       code={item.props.MonomerNaturalAnalogCode}
       data-testid={item.props.MonomerNaturalAnalogCode}
       data-monomer-item-id={getMonomerUniqueKey(item)}

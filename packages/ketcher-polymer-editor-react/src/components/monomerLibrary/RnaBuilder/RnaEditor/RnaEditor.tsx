@@ -30,6 +30,7 @@ import {
   setActivePreset,
   setActivePresetName,
   setActiveRnaBuilderItem,
+  setHasUniqueNameError,
   setIsEditMode as setIsEditModeAction
 } from 'state/rna-builder'
 import { scrollToElement } from 'helpers/dom'
@@ -78,6 +79,16 @@ export const RnaEditor = () => {
   }
 
   const saveActivePreset = () => {
+    const presetWithSameName = presets.find(
+      (preset) => preset.name === activePreset.name
+    )
+    if (
+      presetWithSameName &&
+      activePreset.presetInList !== presetWithSameName
+    ) {
+      dispatch(setHasUniqueNameError(true))
+      return
+    }
     dispatch(savePreset(activePreset))
     setIsEditMode(false)
     setTimeout(() => {
@@ -90,10 +101,15 @@ export const RnaEditor = () => {
   }
 
   const cancelEdit = () => {
-    setIsEditMode(false)
+    if (presets.length === 0) {
+      dispatch(createNewPreset())
+      return
+    }
+
     if (!activePreset.presetInList) {
       dispatch(setActivePreset(presets[0]))
     }
+    setIsEditMode(false)
   }
 
   const duplicatePreset = () => {

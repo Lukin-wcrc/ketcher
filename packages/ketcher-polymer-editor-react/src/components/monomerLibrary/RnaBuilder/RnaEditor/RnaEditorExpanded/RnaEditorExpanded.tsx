@@ -22,6 +22,7 @@ import {
   NameContainer,
   NameInput,
   NameLine,
+  PresetName,
   RnaEditorExpandedContainer,
   StyledButton
 } from './styles'
@@ -114,7 +115,10 @@ export const RnaEditorExpanded = ({
 
   return (
     <RnaEditorExpandedContainer>
-      <NameContainer onClick={() => selectGroup(RnaBuilderPresetsItem.Presets)}>
+      <NameContainer
+        selected={activeMonomerGroup === RnaBuilderPresetsItem.Presets}
+        onClick={() => selectGroup(RnaBuilderPresetsItem.Presets)}
+      >
         {isEditMode ? (
           <NameInput
             value={name}
@@ -122,7 +126,7 @@ export const RnaEditorExpanded = ({
             onChange={onChangeName}
           />
         ) : (
-          <div>{name}</div>
+          <PresetName>{name}</PresetName>
         )}
         <NameLine
           selected={activeMonomerGroup === RnaBuilderPresetsItem.Presets}
@@ -146,9 +150,7 @@ export const RnaEditorExpanded = ({
       </GroupsContainer>
       <ButtonsContainer>
         {isEditMode ? (
-          <StyledButton onClick={onCancel} disabled={presets.length === 0}>
-            Cancel
-          </StyledButton>
+          <StyledButton onClick={onCancel}>Cancel</StyledButton>
         ) : (
           <StyledButton onClick={onDuplicate}>Duplicate and Edit</StyledButton>
         )}

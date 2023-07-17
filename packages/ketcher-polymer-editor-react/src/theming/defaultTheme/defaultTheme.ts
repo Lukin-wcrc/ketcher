@@ -48,7 +48,8 @@ export const defaultTheme: EditorTheme = {
       secondary: '#167782',
       light: '#585858',
       dark: '#000000',
-      error: '#FF4A4A'
+      error: '#FF4A4A',
+      lightgrey: '#7C7C7F'
     },
     tab: {
       regular: '#FFFFFF',
